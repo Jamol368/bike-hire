@@ -24,8 +24,8 @@ Route::post('/register', [AuthController::class, 'register']);
 //Route::post('/shop', [\App\Http\Controllers\ShopController::class, 'store']);
 //Route::put('/shop/{id}', [\App\Http\Controllers\ShopController::class, 'update']);
 
+Route::apiResource('/shop', ShopController::class);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/refresh', [AuthController::class, 'refresh']);
-    Route::apiResource('/shop', ShopController::class);
     Route::apiResource('/bike-category', BikeCategoryController::class);
 });
