@@ -48,9 +48,9 @@ RUN chmod +x /var/www/html/docker/entrypoint.sh
 # Set working directory
 WORKDIR /var/www/html
 
-EXPOSE 9000
-
 ENTRYPOINT [ "docker/entrypoint.sh" ]
+
+EXPOSE 9000
 
 # Start PHP-FPM
 CMD ["php-fpm"]
