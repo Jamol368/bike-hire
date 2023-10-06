@@ -16,14 +16,15 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
 //            UserSeeder::class,
+//            UserProfileSeeder::class,
 //            ShopSeeder::class,
-            BikeCategorySeeder::class
+//            BikeCategorySeeder::class,
+//            BikeSeeder::class,
+//            RentalSeeder::class,
+//            InvoiceSeeder::class,
+//            TransactionSeeder::class,
+//            BikeImageSeeder::class,
+            UserCreditCardSeeder::class,
         ]);
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }

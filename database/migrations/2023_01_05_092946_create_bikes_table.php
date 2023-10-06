@@ -15,14 +15,15 @@ return new class extends Migration
     {
         Schema::create('bikes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('bike_categories_id')->index()->constrained()->cascadeOnUpdate();
+            $table->foreignId('bike_category_id')->index()->constrained()->cascadeOnUpdate();
             $table->foreignId('shop_id')->index()->constrained()->cascadeOnUpdate();
-            $table->string('name', 31)->index();
-            $table->string('slug', 31)->unique()->index();
+            $table->string('name', 63)->index();
+            $table->string('slug', 63)->unique()->index();
             $table->float('price');
             $table->float('penalty');
             $table->float('discount')->default(0);
-            $table->smallInteger('status')->default(1);
+            $table->boolean('status')->default(true);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

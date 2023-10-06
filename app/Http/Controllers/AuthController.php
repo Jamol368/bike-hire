@@ -19,6 +19,7 @@ class AuthController extends Controller
                 auth()->user()->tokens()->delete();
                 return response()->json(['access token' => $user->createToken($user->name)->plainTextToken]);
                 // 2|WBfKXNMAtFQ6JfoPbKDSj1OyYrSXxLx7d4YqG4qw
+                // 1|wZKlMrWDY5BlkSAmkLGowJdQTMFMigPGEJh5xJqk
             }
         } catch (\Exception $exception) {
             return response()->json($exception);

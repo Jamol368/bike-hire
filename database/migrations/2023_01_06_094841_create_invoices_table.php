@@ -15,13 +15,14 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('rentals_id')->index()->constrained()->cascadeOnUpdate();
-            $table->integer('days');
-            $table->integer('penalty_days')->default(0);
+            $table->foreignId('rental_id')->index()->constrained()->cascadeOnUpdate();
+            $table->integer('hours');
+            $table->integer('penalty_hours')->default(0);
             $table->float('amount');
             $table->float('penalty_amount')->default(0);
             $table->float('total')->index();
-            $table->smallInteger('payment_status')->default(1);
+            $table->boolean('payment_status')->default(true);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -24,16 +24,16 @@ class ShopRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:63',
-            'slug' => 'required|unique:shops|max:63',
-            'image' => 'required|max:63',
-            'manager' => 'required|max:63',
+            'name' => 'required|max:127',
+            'slug' => 'required|unique:shops|max:127',
+            'image' => 'required|max:255',
+            'manager' => 'required|max:127',
             'phone' => 'required|unique:shops|max:31',
-            'address' => 'required|max:127',
-            'latitude' => 'required|max:31',
-            'longitude' => 'required|max:31',
-            'email' => 'required|unique:shops|email|max:31',
-            'description' => 'required|max:255',
+            'address' => 'required|max:255',
+            'latitude' => 'max:31',
+            'longitude' => 'max:31',
+            'email' => 'required|unique:shops|email|max:63',
+            'description' => 'required|max:511',
         ];
     }
 }

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('bike_images', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('bikes_id')->index()->constrained()->cascadeOnUpdate();
-            $table->string('image', 63)->index();
+            $table->foreignId('bike_id')->index()->constrained()->cascadeOnUpdate();
+            $table->string('image', 255)->index();
             $table->softDeletes();
             $table->timestamps();
         });

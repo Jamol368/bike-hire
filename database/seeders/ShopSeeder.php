@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Shops;
+use App\Models\Shop;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class ShopSeeder extends Seeder
 {
@@ -15,6 +16,10 @@ class ShopSeeder extends Seeder
      */
     public function run()
     {
-        Shops::factory(5)->create();
+        Storage::deleteDirectory('public/shops');
+        Storage::makeDirectory('public/shops');
+
+        Shop::factory(10)
+            ->create();
     }
 }

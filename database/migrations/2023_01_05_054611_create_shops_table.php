@@ -15,16 +15,17 @@ return new class extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 63)->index();
-            $table->string('slug', 63)->unique();
-            $table->string('image', 63);
-            $table->string('manager', 63);
+            $table->string('name', 127)->index();
+            $table->string('slug', 127)->unique();
+            $table->string('image', 255);
+            $table->string('manager', 127);
             $table->string('phone', 31)->unique();
-            $table->string('address', 127);
+            $table->string('address', 255);
             $table->string('latitude', 31)->nullable();
             $table->string('longitude', 31)->nullable();
-            $table->string('email', 31)->unique();
-            $table->string('description', 255);
+            $table->string('email', 63)->unique();
+            $table->string('description', 511);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

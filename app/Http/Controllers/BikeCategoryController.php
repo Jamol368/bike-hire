@@ -17,7 +17,7 @@ class BikeCategoryController extends Controller
      */
     public function index(): JsonResponse
     {
-        $models = BikeCategoryResource::collection(BikeCategory::paginate(4));
+        $models = BikeCategoryResource::collection(BikeCategory::all());
         return response()->json($models);
     }
 

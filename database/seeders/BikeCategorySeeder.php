@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\BikeCategory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class BikeCategorySeeder extends Seeder
 {
@@ -15,6 +16,10 @@ class BikeCategorySeeder extends Seeder
      */
     public function run()
     {
-        BikeCategory::factory(5)->create();
+        Storage::deleteDirectory('public/bike_categories');
+        Storage::makeDirectory('public/bike_categories');
+
+        BikeCategory::factory(10)
+            ->create();
     }
 }

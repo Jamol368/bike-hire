@@ -17,10 +17,10 @@ class BikeCategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->text(32),
-            'slug' => fake()->slug(2),
-            'image' => fake()->imageUrl(),
-            'description' => fake()->text(255),
+            'name' => fake()->text(127),
+            'slug' => fake()->unique()->slug(4),
+            'image' => fake()->image(public_path('storage/bike_categories')),
+            'description' => fake()->text(511),
         ];
     }
 }

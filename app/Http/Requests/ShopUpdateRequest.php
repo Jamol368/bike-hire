@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ShopUpdateRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class ShopUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,16 +25,17 @@ class ShopUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'max:63',
-            'slug' => 'unique:shops|max:63',
-            'image' => 'max:63',
-            'manager' => 'max:63',
-            'phone' => 'unique:shops|max:31',
-            'address' => 'max:127',
+            'name' => 'max:127',
+            'slug' => 'unique:shops|max:127',
+            'image' => 'max:255',
+            'manager' => 'max:127',
+            'phone' => ['max:31', Rule::unique('shops', 'phone')
+                ->ignore($this->shop->id)],
+            'address' => 'max:255',
             'latitude' => 'max:31',
             'longitude' => 'max:31',
-            'email' => 'unique:shops|email|max:31',
-            'description' => 'max:255',
+            'email' => 'unique:shops|email|max:63',
+            'description' => 'max:511',
         ];
     }
 }

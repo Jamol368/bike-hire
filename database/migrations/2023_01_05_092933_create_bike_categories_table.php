@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('bike_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 63)->index();
-            $table->string('slug', 63)->unique()->index();
-            $table->string('image', 63);
-            $table->string('description', 255)->nullable();
+            $table->string('name', 127)->index();
+            $table->string('slug', 127)->unique()->index();
+            $table->string('image', 255);
+            $table->string('description', 511)->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

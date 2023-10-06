@@ -15,13 +15,14 @@ return new class extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('bikes_id')->index()->constrained()->cascadeOnUpdate();
-            $table->foreignId('users_id')->index()->constrained()->cascadeOnUpdate();
-            $table->date('rental_start_date');
-            $table->date('rental_end_date');
-            $table->date('rental_closed_date')->nullable();
-            $table->smallInteger('status')->default(1);
+            $table->foreignId('bike_id')->index()->constrained()->cascadeOnUpdate();
+            $table->foreignId('user_id')->index()->constrained()->cascadeOnUpdate();
+            $table->date('rental_start_datetime');
+            $table->date('rental_end_datetime');
+            $table->date('rental_closed_datetime')->nullable();
+            $table->boolean('status')->default(true);
             $table->string('description', 255)->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

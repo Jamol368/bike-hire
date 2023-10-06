@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BikeCategoryController;
+use App\Http\Controllers\RentalController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,16 +17,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register']);
 
-//Route::get('/shop', [\App\Http\Controllers\ShopController::class, 'index']);
-//Route::get('/shop/{shop}', [\App\Http\Controllers\ShopController::class, 'show']);
-//Route::post('/shop', [\App\Http\Controllers\ShopController::class, 'store']);
-//Route::put('/shop/{id}', [\App\Http\Controllers\ShopController::class, 'update']);
+Route::apiResource('bike-category', BikeCategoryController::class)
+->except(['store', 'update', 'destroy']);
 
-Route::apiResource('/shop', ShopController::class);
+Route::apiResource('shop', ShopController::class)
+    ->except(['store', 'update', 'destroy']);
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::apiResource('rental', RentalController::class);
+
     Route::post('/refresh', [AuthController::class, 'refresh']);
-    Route::apiResource('/bike-category', BikeCategoryController::class);
+
+    Route::apiResource('bike-category', BikeCategoryController::class)
+        ->only(['store', 'update', 'destroy']);
+
+    Route::apiResource('shop', ShopController::class)
+        ->only(['store', 'update', 'destroy']);
 });
